@@ -9,7 +9,7 @@ Generates a password based on the requirements you choose.
 * JavaScript
 
 ## Site Preview
-![Preview](./Develop/preview.jpeg)
+![Preview](./assets/img/preview.jpeg)
 
 ## Website
 https://pandolfom.github.io/password-generator/
