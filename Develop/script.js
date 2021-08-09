@@ -14,8 +14,19 @@ var SYMBOL_CODES = lowToHigh(33, 47).concat(
   lowToHigh(123, 126)
 )
 
+// Make sure the characterAmount is a number
+function passLen() {
+  characterAmount = window.prompt('How many characters would you like? (8-128)');
+
+  if (characterAmount >= 8 && characterAmount <= 128) {
+  } else {
+    window.alert('Not a valid input!', '8-128');
+    passLen();
+  }
+}
+
 function generatePassword() {
-  characterAmount = window.prompt('How many characters would you like?');
+  passLen();
   includeUppercase = window.confirm('Do you want to include uppercase letters?');
   includeNumbers = window.confirm('Do you want to include numbers?')
   includeSymbols = window.confirm('Do you want to include symbols?')
@@ -51,6 +62,7 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
+  var save = localStorage.setItem("Password", password);
 
   passwordText.value = password;
 
