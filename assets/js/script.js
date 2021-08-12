@@ -1,18 +1,12 @@
 // Assignment code here
 // character codes for lowercase letters
-var UPPERCASE_CODES = lowToHigh(65, 90)
+var UPPERCASE = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 // character codes for uppercase letters
-var LOWERCSE_CODES = lowToHigh(97, 122)
+var LOWERCSE = 'abcdefghijklmnopqrstuvwxyz';
 // character codes for numbers
-var NUMBER_CODES = lowToHigh(48, 57)
+var NUMBERS = '0123456789';
 // character codes for symbols
-var SYMBOL_CODES = lowToHigh(33, 47).concat(
-  lowToHigh(58, 64)
-).concat(
-  lowToHigh(91, 96)
-).concat(
-  lowToHigh(123, 126)
-)
+var SYMBOLS = '*;<>()[]{}#$?!^|';
 
 // Make sure the characterAmount is a number
 function passLen() {
@@ -26,35 +20,39 @@ function passLen() {
 }
 
 function generatePassword() {
+  var pass = ""
+
   passLen();
   includeUppercase = window.confirm('Do you want to include uppercase letters?');
   includeNumbers = window.confirm('Do you want to include numbers?')
   includeSymbols = window.confirm('Do you want to include symbols?')
 
   // Default pass is all lowercase
-  let charCodes = LOWERCSE_CODES
+  var characters = LOWERCSE
   // If user wants uppcase add uppercase
-  if (includeUppercase) charCodes = charCodes.concat(UPPERCASE_CODES)
+  if (includeUppercase) characters = characters.concat(UPPERCASE)
   // if user wants numbers add numbers
-  if (includeNumbers) charCodes = charCodes.concat(NUMBER_CODES)
+  if (includeNumbers) characters = characters.concat(NUMBERS)
   // if user wants symbols add symbols
-  if (includeSymbols) charCodes = charCodes.concat(SYMBOL_CODES)
-  
-  var passwordCharacters = []
-  for (let i = 0; i < characterAmount; i++) {
-    var characterCode = charCodes[Math.floor(Math.random() * charCodes.length)]
-    passwordCharacters.push(String.fromCharCode(characterCode))
+  if (includeSymbols) characters = characters.concat(SYMBOLS)
+
+  for (i = 1; i < characterAmount; i++) {
+    var char = Math.floor(Math.random() * characters.length + 1);
+
+    pass += characters.charAt(char)
   }
-  return passwordCharacters.join('')
+  return pass
 }
 
-function lowToHigh (low, high) {
-  var array = []
-  for (let i = low; i <= high; i++) {
-    array.push(i)
-  }
-  return array
-}
+
+
+// function lowToHigh (low, high) {
+//   var array = []
+//   for (let i = low; i <= high; i++) {
+//     array.push(i)
+//   }
+//   return array
+// }
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
