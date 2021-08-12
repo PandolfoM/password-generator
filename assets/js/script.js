@@ -44,15 +44,6 @@ function generatePassword() {
   return pass
 }
 
-
-
-// function lowToHigh (low, high) {
-//   var array = []
-//   for (let i = low; i <= high; i++) {
-//     array.push(i)
-//   }
-//   return array
-// }
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
